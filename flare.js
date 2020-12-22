@@ -120,7 +120,7 @@ function readFormData() {
     y = parseFloat(document.querySelector('input[name=y]').value);
     novascale = parseFloat(document.querySelector('input[name=novascale]').value);
     streakscale = parseFloat(document.querySelector('input[name=streakscale]').value);
-    seed = parseFloat(document.querySelector('input[name=randseed]').value);
+    seed = document.querySelector('input[name=randseed]').value;
     drawFlare(x, y, novascale, streakscale, seed);
 }
 for (inputbox of document.getElementsByTagName("input")) {
