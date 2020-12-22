@@ -3,7 +3,7 @@ svgns = "http://www.w3.org/2000/svg";
 svgElem = document.getElementById("flarecontainer");
 svgElem.setAttribute("xmlns", svgns);
 
-function drawFlare(flareX, flareY) {
+function drawFlare(flareX, flareY, hotspotscale, streakscale) {
 
     // clear old
     svgElem.innerHTML = "";
@@ -55,7 +55,7 @@ function drawFlare(flareX, flareY) {
 
     hotspot = document.createElementNS(svgns, "path");
     hotspot.setAttribute("d", "M570.33 225L416.45 229.41L547.51 310.16L412.04 237.04L485.16 372.51L404.41 241.45L400 395.33L395.59 241.45L314.84 372.51L387.96 237.04L252.49 310.16L383.55 229.41L229.67 225L383.55 220.59L252.49 139.84L387.96 212.96L314.84 77.49L395.59 208.55L400 54.67L404.41 208.55L485.16 77.49L412.04 212.96L547.51 139.84L416.45 220.59L570.33 225Z");
-    hotspot.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(0.35)");
+    hotspot.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(" + (0.35 * hotspotscale).toString() + ")");
     hotspot.style.transformOrigin = "center";
     hotspot.style.fill = "white";
     svgElem.appendChild(hotspot);
@@ -63,7 +63,7 @@ function drawFlare(flareX, flareY) {
     halo = document.createElementNS(svgns, "circle");
     halo.setAttribute("cx", 400);
     halo.setAttribute("cy", 225);
-    halo.setAttribute("r", 50);
+    halo.setAttribute("r", 50 * hotspotscale);
     halo.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")");
     halo.setAttribute("opacity", 0.1);
     halo.style.fill = "white";
@@ -71,7 +71,7 @@ function drawFlare(flareX, flareY) {
 
     streak = document.createElementNS(svgns, "path");
     streak.setAttribute("d", "M603 225L400 230L197 225L400 220L603 225Z");
-    streak.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(1, 0.4)");
+    streak.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(" + streakscale.toString() + ", 0.4)");
     streak.style.transformOrigin = "center";
     streak.style.fill = "white";
     svgElem.appendChild(streak);
@@ -86,4 +86,4 @@ function exportFlare() {
     downloadLink.click();
 }
 
-drawFlare(200, 200);
+drawFlare(200, 200, 1, 1);
