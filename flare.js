@@ -3,6 +3,12 @@ svgns = "http://www.w3.org/2000/svg";
 svgElem = document.getElementById("flarecontainer");
 svgElem.setAttribute("xmlns", svgns);
 
+// link number/range
+for (i = 0; i < document.querySelectorAll('input[type=number]').length; i++) {
+    document.querySelectorAll("input[type=range]")[i].oninput = new Function("document.querySelectorAll('input[type=number]')[" + i.toString() + "].value = document.querySelectorAll('input[type=range]')[" + i.toString() + "].value");
+    document.querySelectorAll("input[type=number]")[i].onkeyup = new Function("document.querySelectorAll('input[type=range]')[" + i.toString() + "].value = document.querySelectorAll('input[type=number]')[" + i.toString() + "].value");
+}
+
 function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
 
     // use random seed - thanks to http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html
@@ -89,7 +95,22 @@ function exportFlare() {
     downloadLink.click();
 }
 
-drawFlare(200, 200, 1, 1, "hi");
+// check for form updating
+function readFormData() {
+    x = parseFloat(document.querySelector('input[name=x]').value);
+    y = parseFloat(document.querySelector('input[name=y]').value);
+    novascale = parseFloat(document.querySelector('input[name=novascale]').value);
+    streakscale = parseFloat(document.querySelector('input[name=streakscale]').value);
+    seed = parseFloat(document.querySelector('input[name=randseed]').value);
+    drawFlare(x, y, novascale, streakscale, seed);
+}
+for (inputbox of document.getElementsByTagName("input")) {
+    inputbox.addEventListener("keyup", readFormData);
+    inputbox.addEventListener("input", readFormData);
+}
+
+// drawFlare(200, 200, 1, 1, "hi");
+readFormData();
 
 /*
 // animation just for fun
