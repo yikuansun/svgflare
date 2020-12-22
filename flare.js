@@ -17,6 +17,15 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     // clear old
     svgElem.innerHTML = "";
 
+    // add defs
+    svgElem.innerHTML += `
+    <defs>
+        <filter id="blur" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+        </filter>
+    </defs>
+    `;
+
     // black bg
     background = document.createElementNS(svgns, "rect");
     background.setAttribute("width", 800);
@@ -41,6 +50,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
             iris.style.mixBlendMode = "screen";
+            iris.setAttribute("filter", "url(#blur)");
             svgElem.appendChild(iris);
         }
     }
@@ -60,6 +70,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
             iris.style.mixBlendMode = "screen";
+            iris.setAttribute("filter", "url(#blur)");
             svgElem.appendChild(iris);
         }
     }
@@ -70,6 +81,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     hotspot.style.transformOrigin = "center";
     hotspot.style.fill = "white";
     hotspot.style.mixBlendMode = "screen";
+    hotspot.setAttribute("filter", "url(#blur)");
     svgElem.appendChild(hotspot);
 
     halo = document.createElementNS(svgns, "circle");
@@ -80,6 +92,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     halo.setAttribute("opacity", 0.1);
     halo.style.fill = "white";
     halo.style.mixBlendMode = "screen";
+    halo.setAttribute("filter", "url(#blur)");
     svgElem.appendChild(halo);
 
     streak = document.createElementNS(svgns, "path");
@@ -88,6 +101,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     streak.style.transformOrigin = "center";
     streak.style.fill = "white";
     streak.style.mixBlendMode = "screen";
+    streak.setAttribute("filter", "url(#blur)");
     svgElem.appendChild(streak);
 
 }
