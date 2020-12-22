@@ -3,7 +3,10 @@ svgns = "http://www.w3.org/2000/svg";
 svgElem = document.getElementById("flarecontainer");
 svgElem.setAttribute("xmlns", svgns);
 
-function drawFlare(flareX, flareY, hotspotscale, streakscale) {
+function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
+
+    // use random seed - thanks to http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html
+    Math.seedrandom(randomseed);
 
     // clear old
     svgElem.innerHTML = "";
@@ -86,4 +89,17 @@ function exportFlare() {
     downloadLink.click();
 }
 
-drawFlare(200, 200, 1, 1);
+drawFlare(200, 200, 1, 1, "hi");
+
+/*
+// animation just for fun
+x_value = 0;
+function animation() {
+    drawFlare(x_value, 100, 1, 1, "hi");
+    x_value++;
+    if (x_value <= 800) {
+        requestAnimationFrame(animation);
+    }
+}
+animation();
+*/
