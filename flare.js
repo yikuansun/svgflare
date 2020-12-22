@@ -34,3 +34,19 @@ hotspot.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCe
 hotspot.style.transformOrigin = "center";
 hotspot.style.fill = "white";
 svgElem.appendChild(hotspot);
+
+halo = document.createElementNS(svgns, "circle");
+halo.setAttribute("cx", 400);
+halo.setAttribute("cy", 225);
+halo.setAttribute("r", 50);
+halo.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")");
+halo.setAttribute("opacity", 0.1);
+halo.style.fill = "white";
+svgElem.appendChild(halo);
+
+streak = document.createElementNS(svgns, "path");
+streak.setAttribute("d", "M603 225L400 230L197 225L400 220L603 225Z");
+streak.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(1, 0.4)");
+streak.style.transformOrigin = "center";
+streak.style.fill = "white";
+svgElem.appendChild(streak);
