@@ -1,6 +1,7 @@
 svgns = "http://www.w3.org/2000/svg";
 
 svgElem = document.getElementById("flarecontainer");
+svgElem.setAttribute("xmlns", svgns);
 
 function drawFlare(flareX, flareY) {
 
@@ -75,6 +76,14 @@ function drawFlare(flareX, flareY) {
     streak.style.fill = "white";
     svgElem.appendChild(streak);
 
+}
+
+function exportFlare() {
+    file = new Blob([svgElem.outerHTML], {type: "svg"});
+    downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(file);
+    downloadLink.download = "my_lens_flare.svg";
+    downloadLink.click();
 }
 
 drawFlare(200, 200);
