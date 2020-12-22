@@ -6,7 +6,7 @@ svgElem.setAttribute("xmlns", svgns);
 // link number/range
 for (i = 0; i < document.querySelectorAll('input[type=number]').length; i++) {
     document.querySelectorAll("input[type=range]")[i].oninput = new Function("document.querySelectorAll('input[type=number]')[" + i.toString() + "].value = document.querySelectorAll('input[type=range]')[" + i.toString() + "].value");
-    document.querySelectorAll("input[type=number]")[i].onkeyup = new Function("document.querySelectorAll('input[type=range]')[" + i.toString() + "].value = document.querySelectorAll('input[type=number]')[" + i.toString() + "].value");
+    document.querySelectorAll("input[type=number]")[i].oninput = new Function("document.querySelectorAll('input[type=range]')[" + i.toString() + "].value = document.querySelectorAll('input[type=number]')[" + i.toString() + "].value");
 }
 
 function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
@@ -146,7 +146,6 @@ function readFormData() {
     drawFlare(x, y, novascale, streakscale, seed);
 }
 for (inputbox of document.getElementsByTagName("input")) {
-    inputbox.addEventListener("keyup", readFormData);
     inputbox.addEventListener("input", readFormData);
 }
 
