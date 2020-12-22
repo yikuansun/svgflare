@@ -26,28 +26,9 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
 
     flareCenter = [flareX - 400, flareY - 225];
 
-    x = flareCenter[0];
-    y = flareCenter[1];
-
-    // multi-iris towards lens
-    for (i = 0; i < 55; i++) {
-        x += (0 - flareCenter[0]) / 20
-        y += (0 - flareCenter[1]) / 20;
-        if (Math.random() < 0.35) {
-            iris = document.createElementNS(svgns, "path");
-            iris.setAttribute("d", "M431.16 225L422.04 247.04L400 256.16L377.96 247.04L368.84 225L377.96 202.96L400 193.84L422.04 202.96L431.16 225Z");
-            iris.setAttribute("transform", "translate(" + x.toString() + ", " + y.toString() + ")\nscale(" + (Math.random() * (i / 30)).toString() + ")");
-            iris.setAttribute("opacity", Math.random() / 3);
-            iris.style.transformOrigin = "center";
-            iris.style.fill = "white";
-            svgElem.appendChild(iris);
-        }
-    }
-
-    x = flareCenter[0];
-    y = flareCenter[1];
-    
     // multi-iris away from lens
+    x = flareCenter[0];
+    y = flareCenter[1];
     for (i = 0; i < 25; i++) {
         x -= (0 - flareCenter[0]) / 20
         y -= (0 - flareCenter[1]) / 20;
@@ -84,6 +65,23 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     streak.style.transformOrigin = "center";
     streak.style.fill = "white";
     svgElem.appendChild(streak);
+
+    // multi-iris towards lens
+    x = flareCenter[0];
+    y = flareCenter[1];
+    for (i = 0; i < 55; i++) {
+        x += (0 - flareCenter[0]) / 20
+        y += (0 - flareCenter[1]) / 20;
+        if (Math.random() < 0.35) {
+            iris = document.createElementNS(svgns, "path");
+            iris.setAttribute("d", "M431.16 225L422.04 247.04L400 256.16L377.96 247.04L368.84 225L377.96 202.96L400 193.84L422.04 202.96L431.16 225Z");
+            iris.setAttribute("transform", "translate(" + x.toString() + ", " + y.toString() + ")\nscale(" + (Math.random() * (i / 30)).toString() + ")");
+            iris.setAttribute("opacity", Math.random() / 3);
+            iris.style.transformOrigin = "center";
+            iris.style.fill = "white";
+            svgElem.appendChild(iris);
+        }
+    }
 
 }
 
