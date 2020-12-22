@@ -40,6 +40,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.setAttribute("opacity", Math.random() / 3);
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
+            iris.style.mixBlendMode = "screen";
             svgElem.appendChild(iris);
         }
     }
@@ -58,6 +59,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.setAttribute("opacity", Math.random() / 3);
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
+            iris.style.mixBlendMode = "screen";
             svgElem.appendChild(iris);
         }
     }
@@ -67,6 +69,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     hotspot.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(" + (0.35 * hotspotscale).toString() + ")");
     hotspot.style.transformOrigin = "center";
     hotspot.style.fill = "white";
+    hotspot.style.mixBlendMode = "screen";
     svgElem.appendChild(hotspot);
 
     halo = document.createElementNS(svgns, "circle");
@@ -76,6 +79,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     halo.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")");
     halo.setAttribute("opacity", 0.1);
     halo.style.fill = "white";
+    halo.style.mixBlendMode = "screen";
     svgElem.appendChild(halo);
 
     streak = document.createElementNS(svgns, "path");
@@ -83,6 +87,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     streak.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")\nscale(" + streakscale.toString() + ", 0.4)");
     streak.style.transformOrigin = "center";
     streak.style.fill = "white";
+    streak.style.mixBlendMode = "screen";
     svgElem.appendChild(streak);
 
 }
