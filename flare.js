@@ -109,14 +109,32 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
 
 }
 
-function exportFlare() {
+function exportsvg() {
     file = new Blob([svgElem.outerHTML], {type: "svg"});
     downloadLink = document.createElement("a");
     downloadLink.href = URL.createObjectURL(file);
     downloadLink.download = "my_lens_flare.svg";
     downloadLink.click();
 }
-document.getElementById("exportbutton").onclick = exportFlare;
+document.getElementById("exportsvg").onclick = exportsvg;
+function exportpng() {
+    svgData = new XMLSerializer().serializeToString(svgElem);
+    imgElem = document.createElement("img");
+    imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+    imgElem.onload = function() {
+        svgClientRect = svgElem.getBoundingClientRect();
+        canvas = document.createElement("canvas");
+        canvas.width = svgClientRect.width * 4.8;
+        canvas.height = svgClientRect.height * 4.8;
+        ctx = canvas.getContext("2d");
+        ctx.drawImage(imgElem, 0, 0, 3840, 2160);
+        downloadLink = document.createElement("a");
+        downloadLink.href = canvas.toDataURL("image/png");
+        downloadLink.download = "my_lens_flare.png";
+        downloadLink.click();
+    }
+}
+document.getElementById("exportpng").onclick = exportpng;
 
 // check for form updating
 function readFormData() {
