@@ -23,6 +23,9 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
         <filter id="blur" y="-200%" height="500%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
         </filter>
+        <filter id="smallblur" y="-200%" height="500%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" />
+        </filter>
     </defs>
     `;
 
@@ -50,7 +53,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
             iris.style.mixBlendMode = "screen";
-            iris.setAttribute("filter", "url(#blur)");
+            iris.setAttribute("filter", "url(#smallblur)");
             svgElem.appendChild(iris);
         }
     }
@@ -70,7 +73,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
             iris.style.transformOrigin = "center";
             iris.style.fill = "white";
             iris.style.mixBlendMode = "screen";
-            iris.setAttribute("filter", "url(#blur)");
+            iris.setAttribute("filter", "url(#smallblur)");
             svgElem.appendChild(iris);
         }
     }
@@ -81,7 +84,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     hotspot.style.transformOrigin = "center";
     hotspot.style.fill = "white";
     hotspot.style.mixBlendMode = "screen";
-    hotspot.setAttribute("filter", "url(#blur)");
+    hotspot.setAttribute("filter", "url(#smallblur)");
     svgElem.appendChild(hotspot);
 
     halo = document.createElementNS(svgns, "circle");
