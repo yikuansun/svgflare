@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>yikuan's dumb lens flare generator</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <center>
             <svg id="flarecontainer" width="800" height="450"></svg>
+            <br />
             <form onsubmit="return false;">
                 X position: <input type="number" name="x" value="200" /><input type="range" min="0" max="800" value="200"><br />
                 Y position: <input type="number" name="y" value="200" /><input type="range" min="0" max="450" value="200"><br />
@@ -15,9 +17,9 @@
                 <button id="exportsvg">Export as SVG</button><br />
                 <button id="exportpng">Export as PNG</button>
             </form>
+            <br />
             <a href="https://github.com/yikuansun/svgflare/issues" target="_blank">Submit feedback</a>
         </center>
-        <script src="https://d3js.org/d3.v6.min.js"></script>
         <script src="libraries/seedrandom.js"></script>
         <script src="flare.js"></script>
     </body>
