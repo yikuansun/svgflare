@@ -20,7 +20,7 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     // add defs
     svgElem.innerHTML += `
     <defs>
-        <filter id="blur" x="-200%" y="-200%" width="500%" height="500%">
+        <filter id="blur" y="-200%" height="500%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
         </filter>
     </defs>
