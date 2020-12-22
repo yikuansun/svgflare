@@ -116,6 +116,7 @@ function exportFlare() {
     downloadLink.download = "my_lens_flare.svg";
     downloadLink.click();
 }
+document.getElementById("exportbutton").onclick = exportFlare;
 
 // check for form updating
 function readFormData() {
