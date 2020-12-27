@@ -26,6 +26,10 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
         <filter id="smallblur" y="-200%" height="500%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" />
         </filter>
+        <radialGradient id="glow">
+            <stop offset="0%" stop-color="white" />
+            <stop offset="100%" stop-color="black" />
+        </radialGradient>
     </defs>
     `;
 
@@ -86,6 +90,16 @@ function drawFlare(flareX, flareY, hotspotscale, streakscale, randomseed) {
     hotspot.style.mixBlendMode = "screen";
     hotspot.setAttribute("filter", "url(#smallblur)");
     svgElem.appendChild(hotspot);
+
+    glow = document.createElementNS(svgns, "circle");
+    glow.setAttribute("cx", 400);
+    glow.setAttribute("cy", 225);
+    glow.setAttribute("r", 22.5 * hotspotscale);
+    glow.setAttribute("transform", "translate(" + flareCenter[0] + ", " + flareCenter[1] + ")");
+    glow.style.fill = "url(#glow)";
+    glow.setAttribute("filter", "url(#blur)");
+    glow.style.mixBlendMode = "screen";
+    svgElem.appendChild(glow);
 
     halo = document.createElementNS(svgns, "circle");
     halo.setAttribute("cx", 400);
